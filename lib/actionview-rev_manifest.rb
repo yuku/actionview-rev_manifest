@@ -20,10 +20,12 @@ module RevManifest
     video:      "assets/videos/"
   }
 
+  DEFAULT_ASSET_ROOT = "/"
+
   DEFAULT_MANIFEST_PATH = "public/assets/rev-manifest.json"
 
   class << self
-    attr_writer :enabled, :asset_prefixes, :asset_public_directories, :manifest_path
+    attr_writer :enabled, :asset_prefixes, :asset_public_directories, :asset_root, :manifest_path
 
     #  @return [true, false]
     def enabled?
@@ -31,13 +33,25 @@ module RevManifest
     end
 
     # @return [Hash]
+    def asset_public_directories
+      @asset_public_directories || DEFAULT_ASSET_PUBLIC_DIRECTORIES
+    end
+
+    # @return [String]
+    def resolve(source, options)
+      asset_root + manifest[asset_prefixes[options[:type]] + source]
+    end
+
+    private
+
+    # @return [Hash]
     def asset_prefixes
       @asset_prefixes || DEFAULT_ASSET_PREFIXES
     end
 
-    # @return [Hash]
-    def asset_public_directories
-      @asset_public_directories || DEFAULT_ASSET_PUBLIC_DIRECTORIES
+    # @return [String]
+    def asset_root
+      @asset_root || DEFAULT_ASSET_ROOT
     end
 
     # @return [String]
