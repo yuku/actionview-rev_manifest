@@ -1,7 +1,7 @@
 module ActionView
   class Base
-    # @note Patch {ActionView::Helpers::AssetUrlHelper#compute_asset_path}.
-    def compute_asset_path_with_rev_manifest(source, options = {})
+    # @note Override {ActionView::Helpers::AssetUrlHelper#compute_asset_path}.
+    def compute_asset_path(source, options = {})
       if RevManifest.include?(source)
         if RevManifest.enabled?
           RevManifest.resolve(source, options)
@@ -10,10 +10,8 @@ module ActionView
           File.join(dir, source)
         end
       else
-        compute_asset_path_without_rev_manifest(source, options)
+        super
       end
     end
-
-    alias_method_chain :compute_asset_path, :rev_manifest
   end
 end

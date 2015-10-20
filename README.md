@@ -37,14 +37,6 @@ MyApp::Application.config do
 end
 ```
 
-In addition, make sure that sprockets is loaded ahead:
-
-```rb
-# Gemfile
-gem "sprockets"
-gem "actionview-rev_manifest"
-```
-
 ## Sample gulpfile.coffee
 
 ```coffee
