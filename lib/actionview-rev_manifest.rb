@@ -1,4 +1,3 @@
-require "rev_manifest/actionview/base"
 require "rev_manifest/railtie"
 require "rev_manifest/version"
 

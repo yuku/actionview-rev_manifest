@@ -1,6 +1,5 @@
-module ActionView
-  class Base
-    # @note Override {ActionView::Helpers::AssetUrlHelper#compute_asset_path}.
+module RevManifest
+  module Helper
     def compute_asset_path(source, options = {})
       if RevManifest.include?(source)
         if RevManifest.enabled?
