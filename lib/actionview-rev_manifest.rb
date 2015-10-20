@@ -1,5 +1,6 @@
-require "rev_manifest/version"
 require "rev_manifest/actionview/base"
+require "rev_manifest/railtie"
+require "rev_manifest/version"
 
 module RevManifest
   DEFAULT_ASSET_PUBLIC_DIRECTORIES = {

@@ -19,9 +19,11 @@ bundle install
 ## Setup
 
 ```rb
-#config/initializers/actionview-rev_manifest.rb
+# config/environments/production.rb
 
-RevManifest.enabled = Rails.env.production?
+MyApp::Application.config do
+  config.rev_manifest.enabled = true
+end
 ```
 
 ## Sample gulpfile.coffee
