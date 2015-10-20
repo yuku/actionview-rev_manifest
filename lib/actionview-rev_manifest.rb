@@ -26,7 +26,8 @@ module RevManifest
   DEFAULT_MANIFEST_PATH = "public/assets/rev-manifest.json"
 
   class << self
-    attr_writer :enabled, :asset_prefixes, :asset_public_directories, :asset_root, :manifest_path
+    attr_writer :enabled, :asset_prefixes, :asset_public_directories, :asset_root, :manifest_path,
+                :sources
 
     #  @return [true, false]
     def enabled?
@@ -36,6 +37,12 @@ module RevManifest
     # @return [Hash]
     def asset_public_directories
       @asset_public_directories || DEFAULT_ASSET_PUBLIC_DIRECTORIES
+    end
+
+    # @return [true, false]
+    def include?(source)
+      return false unless @sources
+      @sources == :all ? true : @sources.include?(source)
     end
 
     # @return [String]
