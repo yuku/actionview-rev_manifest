@@ -22,7 +22,7 @@ bundle install
 # config/environments/production.rb
 
 MyApp::Application.config do
-  config.rev_manifest.enabled = true
+  config.rev_manifest.enable = true
 end
 ```
 
