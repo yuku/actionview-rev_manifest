@@ -26,6 +26,25 @@ MyApp::Application.config do
 end
 ```
 
+### With Sprockets
+
+If you want to serve some assets with RevManifest and rest of them with Sprockets, specify all
+sources' name, which you want to serve with RevManifest, as `config.rev_manifest.sources`:
+
+```rb
+MyApp::Application.config do
+  config.rev_manifest.sources = ["new_application.js", "new_application.css"]
+end
+```
+
+In addition, make sure that sprockets is loaded ahead:
+
+```rb
+# Gemfile
+gem "sprockets"
+gem "actionview-rev_manifest"
+```
+
 ## Sample gulpfile.coffee
 
 ```coffee
